@@ -214,4 +214,9 @@ async function loadPage() {
   loadDelayed();
 }
 
+// Experience Workspace canvas (Layout mode): let the style-switcher plugin restyle the page
+if (window.self !== window.top) {
+  import('./style-switcher.js').then(({ initCanvasStyleSwitcher }) => initCanvasStyleSwitcher());
+}
+
 loadPage();

@@ -84,6 +84,61 @@ body.appear {
   display: block;
 }
 
+/* page styles (applied on body, selectable from the EW style-switcher plugin) */
+body.style-standard {
+  color-scheme: light;
+}
+
+/* dark: "midnight editorial" - ink blue, warm paper text, amber accents, serif headings */
+body.style-dark {
+  --background-color: #14161f;
+  --light-color: #1f2230;
+  --dark-color: #c9b48a;
+  --text-color: #ece6d9;
+  --link-color: #f2b544;
+  --link-hover-color: #ffd37a;
+  --body-font-family: inter, 'Helvetica Neue', arial, sans-serif;
+  --heading-font-family: 'playfair display', georgia, 'Times New Roman', serif;
+
+  color-scheme: dark;
+}
+
+body.style-dark :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff4dc;
+}
+
+/* futuristic: "neon cyber" - deep violet, cyan text, magenta/lime accents, wide geometric type */
+body.style-futuristic {
+  --background-color: #07021a;
+  --light-color: #140a33;
+  --dark-color: #00e5ff;
+  --text-color: #c8f7ff;
+  --link-color: #ff2bd6;
+  --link-hover-color: #b6ff3b;
+  --body-font-family: 'exo 2', 'Trebuchet MS', sans-serif;
+  --heading-font-family: orbitron, 'Arial Black', sans-serif;
+
+  color-scheme: dark;
+  background-image:
+    radial-gradient(circle at 10% 0%, rgb(255 43 214 / 28%), transparent 40%),
+    radial-gradient(circle at 90% 100%, rgb(0 229 255 / 22%), transparent 45%),
+    repeating-linear-gradient(0deg, rgb(0 229 255 / 4%) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, rgb(0 229 255 / 4%) 0 1px, transparent 1px 32px);
+  background-attachment: fixed;
+}
+
+body.style-futuristic :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #e9fdff;
+  text-shadow:
+    0 0 6px rgb(0 229 255 / 80%),
+    0 0 18px rgb(255 43 214 / 45%);
+}
+
 header {
   height: var(--nav-height);
 }
@@ -322,4 +377,40 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* page style overrides (kept after base rules for specificity order) */
+body.style-dark h1 {
+  font-style: italic;
+}
+
+body.style-dark main .section.light,
+body.style-dark main .section.highlight {
+  border-block: 1px solid rgb(242 181 68 / 25%);
+}
+
+body.style-futuristic main .section.light,
+body.style-futuristic main .section.highlight {
+  border-block: 1px solid rgb(0 229 255 / 35%);
+  box-shadow: inset 0 0 40px rgb(255 43 214 / 15%);
+}
+
+body.style-dark a.button:any-link,
+body.style-dark button.button {
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+body.style-dark header .icon img,
+body.style-futuristic header .icon img {
+  filter: invert(1);
+}
+
+body.style-futuristic a.button:any-link,
+body.style-futuristic button.button {
+  border-radius: 0;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 14px rgb(255 43 214 / 60%);
 }
